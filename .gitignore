@@ -1,0 +1,47 @@
+# 本机配置、模型与用户数据
+.env
+.env.*
+!.env.example
+.venv/
+.tools/
+models/
+logs/
+output/
+dist/
+build/
+*.egg-info/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.vscode/
+.node/
+data/checkpoints/
+data/indexes/*
+!data/indexes/.gitkeep
+data/knowledge/*
+data/eval/
+
+# 本地测试、开发文档与个人记录，不进入 main 分支
+/docs/
+/tests/
+/test/
+/AGENT.md
+/AGENTS.md
+/CLAUDE.md
+/PROBLEM.md
+/MISSION.md
+/learning-records/
+/lessons/
+/assets/
+/requirements.txt
+/src/local_agent/rag/benchmark.py
+/src/local_agent/rag/evaluation.py
+
+# 只追踪四个用户入口脚本
+/scripts/*
+!/scripts/install.sh
+!/scripts/start.sh
+!/scripts/setup.sh
+!/scripts/doctor.sh

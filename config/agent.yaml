@@ -1,0 +1,32 @@
+agent:
+  system_prompt: "你是本地知识助手。需要外部知识时先检索；需要执行动作时调用工具。"
+  recursion_limit: 12
+  model_input_token_budget: 4096
+  recent_turns_to_keep: 4
+  tool_output_max_chars: 4000
+  repeated_tool_call_limit: 3
+run:
+  # 非交互模式且没有命令行或管道输入时使用；真实终端启动默认进入连续对话。
+  user_prompt: "请介绍你能如何帮助我阅读论文。"
+  checkpoint_enabled: false
+  thread_id: "default"
+  output_dir: "output"
+rag:
+  chunk_size: 600
+  chunk_overlap: 100
+  top_k: 4
+  candidate_k: 20
+  min_vector_score: 0.3
+  rrf_k: 60
+  tokenizer: "jieba"
+  jieba_mode: "accurate"
+  stopwords_path: "data/stopwords/zh.txt"
+  user_dict_path: "data/stopwords/domain_terms.txt"
+
+mcp:
+  brave_search_enabled: false
+  brave_answers_enabled: false
+  brave_answers_model: "brave"
+  brave_search_command: "npx"
+  brave_search_args: "-y @modelcontextprotocol/server-brave-search"
+  brave_search_api_key_env: "BRAVE_API_KEY"
