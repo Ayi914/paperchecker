@@ -7,7 +7,7 @@
 1. 从 GitHub 页面复制仓库地址，克隆项目（将占位符替换为真实地址）：
 
    ```bash
-   git clone <仓库地址> local-agent
+   git clone https://github.com/Ayi914/paperchecker.git local-agent
    cd local-agent
    ```
 
