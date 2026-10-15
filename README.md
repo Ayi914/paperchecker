@@ -1,10 +1,20 @@
 # 本地论文查阅修改助手
 
-一个面向 Linux 的轻量论文辅助 CLI Agent(玩具)。输入问题后，模型可以调用本地工具和论文检索；终端展示执行过程与模型服务返回的思考内容，最终答案单独显示。LLM模型为Qwen14B量化版，上下文窗口大小4096token，输出上限4000token。默认模型权重约 9.4 GB。
+**简体中文** | [English](README_EN.md)
+
+鉴于OpenAI被爆出据说剽窃数学家的成果当作自己的成果发布，于是我紧急编写了这个demo，一个面向Linux的轻量论文辅助CLI Agent。输入问题后，模型可以调用本地工具和论文检索；
+
+默认模型为 Qwen3-14B-AWQ，权重约 9.4 GB。Agent 输入预算默认为 4096 token；模型最大输出由 `.env` 的 `LOCAL_AGENT_MAX_TOKENS` 控制，`.env.example` 中默认是 2048 token。
+
+输入预算和系统 prompt 可以在 `config/agent.yaml` 中修改，因此用途不局限于论文助手。该文件中的 `tool_output_max_chars: 4000` 是工具结果的字符截断上限，不是模型答案的 token 上限。调整参数时需要考虑显存容量。
+
+支持 MCP 协议，可通过工具注册机制接入 MCP 服务。
+
+面向显卡多的没事干并且还极度希望保护自己隐私的用户（
 
 ## 使用说明
 
-1. 从 GitHub 页面复制仓库地址，克隆项目（将占位符替换为真实地址）：
+1. 从 GitHub 页面复制仓库地址，克隆项目：
 
    ```bash
    git clone https://github.com/Ayi914/paperchecker.git local-agent
@@ -67,7 +77,9 @@ bash scripts/start.sh -i --thread-id my-paper
 ## 遇到问题
 
 先执行 `bash scripts/doctor.sh`。它检查环境、GPU 和模型配置，不会加载大模型或开始推理。
-## 常见问题：
+
+## 常见问题
+
 - 没有 GPU：使用有 NVIDIA GPU 的 Linux 机器
 - 模型目录不完整：运行 `bash scripts/setup.sh` 重新选择或继续下载。
 - 下载失败：检查网络；可在有网络的机器下载完整模型目录后复制过来，再选择已有模型。
